@@ -70,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // changed app background 
+    // changed app background
+    // bisiler daha degisti
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
