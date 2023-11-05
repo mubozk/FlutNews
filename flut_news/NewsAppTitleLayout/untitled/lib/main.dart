@@ -7,7 +7,8 @@ void main() {
         backgroundColor: Colors.brown[100],
         appBar: AppBar(
           backgroundColor: Colors.indigo[800],
-          title: Text('News App'),
+          title: Text('News App', style: TextStyle(color: Colors.red, fontFamily: 'Roboto')),
+          centerTitle: true,
         ),
         body: Center(
           child: Image.network(
