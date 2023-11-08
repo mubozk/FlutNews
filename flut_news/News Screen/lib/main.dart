@@ -1,3 +1,4 @@
+import 'package:create_news_screen/screens/newscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const NewsApp());
@@ -15,27 +16,29 @@ class _NewsAppState extends State<NewsApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: 'home' ,
+        routes: {
+        'home' : (context) => NewsApp(),
+          'DetailScreen' : (context) => NewScreen(),
+        },
         home: Scaffold(
             backgroundColor: Colors.indigoAccent[100],
             appBar: AppBar(
-              title: const Text('NewsApp', style: TextStyle(fontSize: 18)),
+              title: const Text('FlutNews', style: TextStyle(fontSize: 18)),
               backgroundColor: Colors.lightBlueAccent[100],
               centerTitle: true,
             ),
             body: InkWell(
                 onTap: () {
-                  setState(() {
-                    if (containerColor == Colors.yellowAccent) {
-                      containerColor = Colors.blueAccent;
-                    } else {
-                      containerColor = Colors.yellowAccent;
-                    }
-                  });
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return NewScreen();
+                  },
+                  )
                 },
                 child: Container(
                     color: containerColor,
-                    width: 200,
-                    height: 200,
+                    width: 400,
+                    height: 400,
                     margin: const EdgeInsets.all(20),
                     padding: const EdgeInsets.all(10),
                     child: const Text(
@@ -43,7 +46,7 @@ class _NewsAppState extends State<NewsApp> {
                       style: TextStyle(fontSize: 20),
                     )
                 )
-            )
+            ),
         ),
     );
   }
