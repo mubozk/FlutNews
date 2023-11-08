@@ -26,5 +26,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         ),
       ),
     );
+    // testler yazdim
   }
 }
