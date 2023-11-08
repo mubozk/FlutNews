@@ -1,70 +1,50 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const AppBarApp());
+void main() => runApp(const NewsApp());
 
-class AppBarApp extends StatelessWidget {
-  const AppBarApp({super.key});
+class NewsApp extends StatefulWidget {
+  const NewsApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: AppBarExample(),
-    );
-  }
+  State<NewsApp> createState() => _NewsAppState();
 }
 
-class AppBarExample extends StatelessWidget {
-  const AppBarExample({super.key});
+class _NewsAppState extends State<NewsApp> {
+  var containerColor = Colors.yellowAccent;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.indigoAccent[100],
-      appBar: AppBar(
-        title: const Text('NewsApp', style: TextStyle(fontSize: 18)),
-        backgroundColor: Colors.lightBlueAccent[100],
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Click to check the news!',
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute<void>(
-                builder: (BuildContext context) {
-                  return Scaffold(
-                    backgroundColor: Colors.indigoAccent[100],
-                    appBar: AppBar(
-                      title: const Text('Göçe Karşı Nobellik Örnek', style: TextStyle(fontSize: 18)),
-                      backgroundColor: Colors.lightBlueAccent[100],
-                      centerTitle: true,
-                    ),
-                    body: Container(
-                      alignment: Alignment.center,
-                        child: const Column(
-                          children: [
-                            Text(
-                              'Türk Kızılayı, Nobel Ödüllü "Mikro Kredi" projesinin bir benzerini Afganların yasadışı göçünü önlemek için hayata geçirdi.',
-                              style: TextStyle(fontSize: 18
-                              ),
-                            ),
-                            Image(image: AssetImage('assets/news_snippet.png')),
-                          ],
-                      ),
-                    ),
-                  );
+    return MaterialApp(
+        home: Scaffold(
+            backgroundColor: Colors.indigoAccent[100],
+            appBar: AppBar(
+              title: const Text('NewsApp', style: TextStyle(fontSize: 18)),
+              backgroundColor: Colors.lightBlueAccent[100],
+              centerTitle: true,
+            ),
+            body: InkWell(
+                onTap: () {
+                  setState(() {
+                    if (containerColor == Colors.yellowAccent) {
+                      containerColor = Colors.blueAccent;
+                    } else {
+                      containerColor = Colors.yellowAccent;
+                    }
+                  });
                 },
-              ));
-            },
-
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          'Welcome to the NewsApp! Click the button on top right to check the news!',
-          style: TextStyle(fontSize: 18),
+                child: Container(
+                    color: containerColor,
+                    width: 200,
+                    height: 200,
+                    margin: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      'Click on me to change my color!',
+                      style: TextStyle(fontSize: 20),
+                    )
+                )
+            )
         ),
-      ),
     );
   }
 }
