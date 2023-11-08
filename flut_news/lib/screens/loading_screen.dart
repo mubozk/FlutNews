@@ -14,6 +14,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Future.delayed(Duration(seconds: 1), () {
       Navigator.pushNamed(context, 'ThemeScreen');
     });  }
+  // test test test
   @override
   Widget build(BuildContext context) {
     return Scaffold(
