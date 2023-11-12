@@ -13,7 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     getLocationData();
-    location.getCurrentLocation();
+    location.getCurrentLocation(context);
     Future.delayed(Duration(seconds: 1), () {
       Navigator.pushNamed(context, 'ThemeScreen');
     });  }
