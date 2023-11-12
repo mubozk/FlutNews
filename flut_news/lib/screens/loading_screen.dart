@@ -15,7 +15,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     getLocationData();
     location.getCurrentLocation();
     Future.delayed(Duration(seconds: 1), () {
-      Navigator.pushNamed(context, 'ThemeScreen');
+      Navigator.pushNamed(context, 'HomeScreen');
     });  }
   void getLocationData() async {
     // var weatherData = await NewsModel().();
