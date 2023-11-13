@@ -20,10 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Table Layout"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(itemBuilder: (BuildContext ctx, int index){
         return Padding(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.only(top: 50, bottom: 50),
               child: Column(
                 children: <Widget>[
                   Image.network(images[index]),
