@@ -12,7 +12,9 @@ class clip_news extends StatelessWidget {
       height: 200,
       width: 400,
       decoration: BoxDecoration(
-        color: isDarkMode ? Colors.teal : Colors.yellow,
+        color: isDarkMode
+            ? Colors.teal.withOpacity(0.7)
+            : Colors.yellow.withOpacity(0.7),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(10),
           bottomRight: Radius.circular(10),
@@ -30,14 +32,14 @@ class clip_news extends StatelessWidget {
         gradient: LinearGradient(
           colors: isDarkMode
               ? [
-                  const Color.fromARGB(255, 4, 170, 153),
-                  const Color.fromARGB(255, 3, 190, 171),
-                  const Color.fromARGB(255, 1, 119, 107)
+                  const Color.fromARGB(255, 4, 170, 153).withOpacity(0.5),
+                  const Color.fromARGB(255, 3, 190, 171).withOpacity(0.5),
+                  const Color.fromARGB(255, 1, 119, 107).withOpacity(0.5),
                 ]
               : [
-                  const Color.fromARGB(255, 238, 222, 81),
-                  const Color.fromARGB(255, 248, 232, 91),
-                  const Color.fromARGB(255, 243, 223, 42)
+                  const Color.fromARGB(255, 238, 222, 81).withOpacity(0.5),
+                  const Color.fromARGB(255, 248, 232, 91).withOpacity(0.5),
+                  const Color.fromARGB(255, 243, 223, 42).withOpacity(0.5)
                 ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -51,7 +53,14 @@ class clip_news extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextButton(onPressed: () {}, child: const Text("read more")),
+              TextButton(
+                  onPressed: () {},
+                  style:
+                      TextButton.styleFrom(foregroundColor: Colors.redAccent),
+                  child: const Text(
+                    "read more",
+                    style: TextStyle(fontSize: 15),
+                  )),
             ],
           )
         ],
