@@ -1,4 +1,4 @@
-import 'package:flut_news/widgets/clip_news.dart';
+import 'package:flut_news/components/clip_news.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_news/utilities/constants.dart';
 
