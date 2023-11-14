@@ -12,20 +12,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    getLocationData();
-    location.getCurrentLocation(context);
-    Future.delayed(Duration(seconds: 1), () {
-      Navigator.pushNamed(context, 'HomeScreen');
-    });  }
-  void getLocationData() async {
-    // var weatherData = await NewsModel().();
-    // Navigator.push(context, MaterialPageRoute(builder: (context) {
-    //   return LocationScreen(
-    //     locationWeather: weatherData,
-    //   );
-    // }));
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

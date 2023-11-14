@@ -7,6 +7,5 @@ class NewsModel {
     NetworkHelper networkHelper = NetworkHelper(url: '$kNewsApiURL?country=$countryName&apiKey=$kApiKey');
     var newsData = await networkHelper.getData();
     return newsData;
-    print(newsData);
   }
 }
