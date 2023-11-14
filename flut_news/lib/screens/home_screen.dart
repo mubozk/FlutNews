@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView.builder(itemBuilder: (BuildContext ctx, int index){
         return Padding(
-          padding: EdgeInsets.only(top: 50, bottom: 50),
+          padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
               child: Column(
                 children: <Widget>[
                   Image.network(images[index]),
