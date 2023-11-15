@@ -4,11 +4,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 
 class Location {
-  double latitude = 0;
-  double longitude = 0;
-  String country = '';
-
-  Future<void> getCurrentLocation(BuildContext context) async {
+  Future<String> getCurrentCountry(BuildContext context) async {
     await _checkLocationPermission(context);
 
     try {
@@ -16,18 +12,21 @@ class Location {
         desiredAccuracy: LocationAccuracy.low,
       );
 
-      latitude = position.latitude;
-      longitude = position.longitude;
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude,
+      );
 
-      List<Placemark> placemarks = await placemarkFromCoordinates(latitude, longitude);
       if (placemarks.isNotEmpty) {
-        country = placemarks[0].country ?? '';
-        print('Country: $country');
+        String country = placemarks[0].country ?? '';
+        return country;
       } else {
         print('No placemarks found');
+        return '';
       }
     } catch (e) {
       print(e);
+      return '';
     }
   }
 
@@ -47,7 +46,9 @@ class Location {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Permission Denied'),
-          content: Text('Location permission is required for location-based news. Default location set to United States. Re-enable location support from settings and relaunch the app'),
+          content: Text(
+            'Location permission is required for location-based news. Default location set to United States. Re-enable location support from settings and relaunch the app',
+          ),
           actions: [
             TextButton(
               onPressed: () {

@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flut_news/models/news_article.dart';
+import 'package:flut_news/components/clip_news.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final List<NewsArticle> locationNews;
+  const HomeScreen({Key? key, required this.locationNews}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List images = [
-    "https://images.wallpaperscraft.com/image/single/forest_man_loneliness_116306_1280x960.jpg",
-    "https://images.wallpaperscraft.com/image/single/landscape_mountains_sun_140434_1280x960.jpg",
-    "https://images.wallpaperscraft.com/image/single/ocean_beach_aerial_view_134429_1280x960.jpg",
-    "https://images.wallpaperscraft.com/image/single/lavender_field_starry_sky_123482_1280x960.jpg",
-    "https://images.wallpaperscraft.com/image/single/mountains_lake_tops_119133_1280x960.jpg",
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,19 +19,24 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: ListView.builder(itemBuilder: (BuildContext ctx, int index){
-        return Padding(
-          padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
-              child: Column(
-                children: <Widget>[
-                  Image.network(images[index]),
-                  SizedBox(height: 20),
-                ],
-              ),
-            );
-      },
-      itemCount: images.length,
-      )
+      body: ListView.builder(
+        itemBuilder: (BuildContext ctx, int index) {
+          // Use the data from locationNews instead of images
+          NewsArticle article = widget.locationNews[index];
+
+          return Padding(
+            padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
+            child: ClipNews(
+              isDarkMode: false, // Set your dark mode condition
+              title: article.title,
+              body: article.description,
+              // Assuming your NewsArticle model has a url property
+              // Add the URL to the ClipNews widget if needed
+            ),
+          );
+        },
+        itemCount: widget.locationNews.length,
+      ),
     );
   }
 }

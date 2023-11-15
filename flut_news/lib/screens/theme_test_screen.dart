@@ -48,7 +48,7 @@ class _ThemeTestScreenState extends State<ThemeTestScreen> {
                   'Current Theme: ${isDarkMode ? 'Dark' : 'Light'}',
                   style: const TextStyle(fontSize: 20),
                 ),
-                ClipNews(isDarkMode: isDarkMode),
+                // ClipNews(isDarkMode: true, title: 'a', body: 'b'),
               ],
             ),
           ),
