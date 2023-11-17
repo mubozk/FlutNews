@@ -23,13 +23,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: 'LoadingScreen' ,
-      routes: {
-        'LoadingScreen' : (context) => LoadingScreen(),
-        'ThemeScreen': (context) => ThemeTestScreen(),
-        'HomeScreen': (context) => HomeScreen(),
-      },
-    );
+    return LoadingScreen();
   }
 }

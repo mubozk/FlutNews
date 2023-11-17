@@ -3,10 +3,9 @@ import 'package:flut_news/utilities/constants.dart';
 
 
 class NewsModel {
-  Future<dynamic> getNews(String countryName) async {
-    NetworkHelper networkHelper = NetworkHelper(url: '$kNewsApiURL?country=$countryName&apiKey=$kApiKey');
+  Future<dynamic> getNews(String countryCode) async {
+    NetworkHelper networkHelper = NetworkHelper(url: '$kNewsApiURL?country=$countryCode&apiKey=$kApiKey');
     var newsData = await networkHelper.getData();
     return newsData;
-    print(newsData);
   }
 }

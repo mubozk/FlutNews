@@ -1,4 +1,4 @@
-import 'package:flut_news/widgets/clip_news.dart';
+import 'package:flut_news/components/clip_news.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_news/utilities/constants.dart';
 
@@ -48,7 +48,7 @@ class _ThemeTestScreenState extends State<ThemeTestScreen> {
                   'Current Theme: ${isDarkMode ? 'Dark' : 'Light'}',
                   style: const TextStyle(fontSize: 20),
                 ),
-                ClipNews(isDarkMode: isDarkMode),
+                // ClipNews(isDarkMode: true, title: 'a', body: 'b'),
               ],
             ),
           ),
