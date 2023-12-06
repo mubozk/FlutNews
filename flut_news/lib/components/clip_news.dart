@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flut_news/utilities/constants.dart';
 class ClipNews extends StatelessWidget {
   final bool isDarkMode;
   final String title;
@@ -15,7 +15,7 @@ class ClipNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200, // Increased height to accommodate the 'Read More' button
+      height: 200,
       decoration: BoxDecoration(
         color: isDarkMode ? Colors.teal.withOpacity(0.7) : Colors.yellow.withOpacity(0.7),
         borderRadius: const BorderRadius.only(
@@ -48,6 +48,7 @@ class ClipNews extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -56,18 +57,16 @@ class ClipNews extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              style: kTitleTextStyle.copyWith(
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
+              overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: 8),
             Expanded(
               child: Text(
                 body,
-                style: TextStyle(
-                  fontSize: 14,
+                style: kBodyTextStyle.copyWith(
                   color: isDarkMode ? Colors.white : Colors.black,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -80,10 +79,7 @@ class ClipNews extends StatelessWidget {
               },
               child: Text(
                 'Read More',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: kReadMoreTextStyle,
               ),
             ),
           ],

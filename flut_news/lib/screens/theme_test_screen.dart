@@ -12,13 +12,13 @@ class ThemeTestScreen extends StatefulWidget {
 class _ThemeTestScreenState extends State<ThemeTestScreen> {
   void toggleTheme() {
     setState(() {
-      isDarkMode = !isDarkMode;
+      kIsDarkMode = !kIsDarkMode;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeData = isDarkMode ? darkTheme : lightTheme;
+    final themeData = kIsDarkMode ? kDarkTheme : kLightTheme;
 
     return MaterialApp(
       theme: themeData,
@@ -29,7 +29,7 @@ class _ThemeTestScreenState extends State<ThemeTestScreen> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: isDarkMode
+                image: kIsDarkMode
                     ? const AssetImage('assets/dark_background.jpg')
                     : const AssetImage('assets/light_background.jpg'),
                 fit: BoxFit.fill),
@@ -40,12 +40,12 @@ class _ThemeTestScreenState extends State<ThemeTestScreen> {
               children: <Widget>[
                 ElevatedButton(
                   onPressed: toggleTheme,
-                  child: Text(isDarkMode
+                  child: Text(kIsDarkMode
                       ? 'Switch to Light Theme'
                       : 'Switch to Dark Theme'),
                 ),
                 Text(
-                  'Current Theme: ${isDarkMode ? 'Dark' : 'Light'}',
+                  'Current Theme: ${kIsDarkMode ? 'Dark' : 'Light'}',
                   style: const TextStyle(fontSize: 20),
                 ),
                 // ClipNews(isDarkMode: true, title: 'a', body: 'b'),
