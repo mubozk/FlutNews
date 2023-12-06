@@ -25,7 +25,7 @@ class Location {
         return '';
       }
     } catch (e) {
-      print(e);
+      print('Geolocator error: $e');
       return '';
     }
   }
