@@ -2,6 +2,7 @@ import 'package:flut_news/screens/home_screen.dart';
 import 'package:flut_news/screens/loading_screen.dart';
 import 'package:flut_news/screens/theme_test_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 void main() {
   runApp(MyApp());
 }
