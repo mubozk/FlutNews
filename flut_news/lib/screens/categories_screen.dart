@@ -45,7 +45,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(categories[index]),
+            title: Text(
+              categories[index],
+              style: TextStyle(
+                color: kIsDarkMode ? Colors.white : Colors.black,
+              ),
+            ),            tileColor: kIsDarkMode ? Colors.grey[850] : Colors.white,
             onTap: () async {
               var newsData = await NewsModel().getNewsByCategory(categories[index]);
               Navigator.push(
