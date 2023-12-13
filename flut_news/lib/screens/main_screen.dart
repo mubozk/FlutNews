@@ -18,6 +18,12 @@ class _MainScreenState extends State<MainScreen> {
 
   late final List<Widget> _pages;
 
+  void toggleTheme() {
+    setState(() {
+      kIsDarkMode = !kIsDarkMode;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -43,9 +49,13 @@ class _MainScreenState extends State<MainScreen> {
         unselectedItemColor: Colors.grey,
 
         onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          if (index == 3) {
+            toggleTheme();
+          } else {
+            setState(() {
+              _currentIndex = index;
+            });
+          }
           // Additional logic for specific tabs can be implemented here
         },
         items: [

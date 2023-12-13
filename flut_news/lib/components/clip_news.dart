@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flut_news/utilities/constants.dart';
-import 'package:flutter/material.dart';
-
 class ClipNews extends StatelessWidget {
-  final bool isDarkMode;
   final String title;
   final String body;
 
   const ClipNews({
     Key? key,
-    required this.isDarkMode,
     required this.title,
     required this.body,
   }) : super(key: key);
@@ -20,7 +16,7 @@ class ClipNews extends StatelessWidget {
       height: 200,
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: isDarkMode ? Colors.teal.withOpacity(0.7) : Colors.yellow.withOpacity(0.7),
+        color: kIsDarkMode ? Colors.teal.withOpacity(0.7) : Colors.yellow.withOpacity(0.7),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
@@ -30,7 +26,7 @@ class ClipNews extends StatelessWidget {
           ),
         ],
         gradient: LinearGradient(
-          colors: isDarkMode
+          colors: kIsDarkMode
               ? [Colors.teal.shade700, Colors.teal.shade500, Colors.teal.shade300]
               : [Colors.yellow.shade800, Colors.yellow.shade600, Colors.yellow.shade400],
           begin: Alignment.topLeft,
@@ -46,7 +42,7 @@ class ClipNews extends StatelessWidget {
             Text(
               title,
               style: kTitleTextStyle.copyWith(
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: kIsDarkMode ? Colors.white : Colors.black,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -55,7 +51,7 @@ class ClipNews extends StatelessWidget {
               child: Text(
                 body,
                 style: kBodyTextStyle.copyWith(
-                  color: isDarkMode ? Colors.white.withOpacity(0.9) : Colors.black.withOpacity(0.9),
+                  color: kIsDarkMode ? Colors.white.withOpacity(0.9) : Colors.black.withOpacity(0.9),
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
@@ -70,7 +66,7 @@ class ClipNews extends StatelessWidget {
                 child: Text(
                   'Read More',
                   style: kReadMoreTextStyle.copyWith(
-                    color: isDarkMode ? Colors.lightBlueAccent : Colors.blue,
+                    color: kIsDarkMode ? Colors.lightBlueAccent : Colors.blue,
                   ),
                 ),
               ),
