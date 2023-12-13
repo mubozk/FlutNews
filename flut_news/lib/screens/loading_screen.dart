@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flut_news/services/location.dart';
 import 'package:flut_news/utilities/country_code_converter.dart';
 import 'package:flut_news/models/news_article.dart';
+import 'package:flut_news/screens/main_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -29,11 +30,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
         .map((articleJson) => NewsArticle.fromJson(articleJson))
         .toList();
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return HomeScreen(
-        locationNews: articles,
-      );
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return MainScreen(locationNews: articles);
     }));
+
   }
 
   @override
