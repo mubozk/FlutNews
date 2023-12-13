@@ -1,3 +1,4 @@
+import 'package:flut_news/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_news/services/news.dart'; // Import NewsModel
 import 'package:flut_news/screens/news_list_screen.dart';
@@ -35,7 +36,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
         title: Text("News Categories"),
       ),
       body: ListView.builder(

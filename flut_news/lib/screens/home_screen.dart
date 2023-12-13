@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flut_news/models/news_article.dart';
 import 'package:flut_news/components/clip_news.dart';
+import 'package:flut_news/utilities/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<NewsArticle> locationNews;
@@ -14,7 +15,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
         title: Text("Table Layout"),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -25,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
           return Padding(
             padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
             child: ClipNews(
-              isDarkMode: false, // Set your dark mode condition
               title: article.title,
               body: article.description,
             ),

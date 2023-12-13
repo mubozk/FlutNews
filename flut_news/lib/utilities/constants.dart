@@ -9,10 +9,12 @@ final kDarkTheme = ThemeData(
   brightness: Brightness.dark,
 );
 const TextStyle kTitleTextStyle = TextStyle(
+  color: Colors.black,
   fontSize: 18,
   fontWeight: FontWeight.bold,
 );
 const TextStyle kBodyTextStyle = TextStyle(
+  color: Colors.black,
   fontSize: 14,
 );
 const TextStyle kReadMoreTextStyle = TextStyle(
