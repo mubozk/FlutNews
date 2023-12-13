@@ -19,6 +19,6 @@ const TextStyle kReadMoreTextStyle = TextStyle(
   color: Colors.blue,
   fontWeight: FontWeight.bold,
 );
-const kApiKey = '';
+const kApiKey = 'dd05d13cf257403d804b6e02775564f6';
 const kNewsApiURL = 'https://newsapi.org/v2/top-headlines';
 

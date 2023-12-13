@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flut_news/utilities/constants.dart';
+import 'package:flutter/material.dart';
+
 class ClipNews extends StatelessWidget {
   final bool isDarkMode;
   final String title;
@@ -16,43 +18,29 @@ class ClipNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
+      margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: isDarkMode ? Colors.teal.withOpacity(0.7) : Colors.yellow.withOpacity(0.7),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(15),
-        ),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            offset: const Offset(5, 5),
-            spreadRadius: 5,
-            blurRadius: 10,
-            color: Colors.black.withOpacity(0.5),
+            offset: Offset(0, 4),
+            blurRadius: 8,
+            color: Colors.black.withOpacity(0.2),
           ),
         ],
         gradient: LinearGradient(
           colors: isDarkMode
-              ? [
-            const Color.fromARGB(255, 4, 170, 153).withOpacity(0.5),
-            const Color.fromARGB(255, 3, 190, 171).withOpacity(0.5),
-            const Color.fromARGB(255, 1, 119, 107).withOpacity(0.5),
-          ]
-              : [
-            const Color.fromARGB(255, 238, 222, 81).withOpacity(0.5),
-            const Color.fromARGB(255, 248, 232, 91).withOpacity(0.5),
-            const Color.fromARGB(255, 243, 223, 42).withOpacity(0.5)
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+              ? [Colors.teal.shade700, Colors.teal.shade500, Colors.teal.shade300]
+              : [Colors.yellow.shade800, Colors.yellow.shade600, Colors.yellow.shade400],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
-      clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
@@ -67,19 +55,24 @@ class ClipNews extends StatelessWidget {
               child: Text(
                 body,
                 style: kBodyTextStyle.copyWith(
-                  color: isDarkMode ? Colors.white : Colors.black,
+                  color: isDarkMode ? Colors.white.withOpacity(0.9) : Colors.black.withOpacity(0.9),
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
               ),
             ),
-            TextButton(
-              onPressed: () {
-                // Handle 'Read More' button click
-              },
-              child: Text(
-                'Read More',
-                style: kReadMoreTextStyle,
+            Align(
+              alignment: Alignment.bottomRight,
+              child: TextButton(
+                onPressed: () {
+                  // Handle 'Read More' button click
+                },
+                child: Text(
+                  'Read More',
+                  style: kReadMoreTextStyle.copyWith(
+                    color: isDarkMode ? Colors.lightBlueAccent : Colors.blue,
+                  ),
+                ),
               ),
             ),
           ],
