@@ -21,17 +21,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext ctx, int index) {
-          // Use the data from locationNews instead of images
           NewsArticle article = widget.locationNews[index];
-
           return Padding(
             padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
             child: ClipNews(
               isDarkMode: false, // Set your dark mode condition
               title: article.title,
               body: article.description,
-              // Assuming your NewsArticle model has a url property
-              // Add the URL to the ClipNews widget if needed
             ),
           );
         },

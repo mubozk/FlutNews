@@ -14,4 +14,15 @@ class NewsModel {
       return null;
     }
   }
+  Future<dynamic> getNewsByCategory(String category) async {
+    try {
+      NetworkHelper networkHelper = NetworkHelper(
+          url: '$kNewsApiURL?category=$category&apiKey=$kApiKey');
+      var newsData = await networkHelper.getData();
+      return newsData;
+    } catch (e) {
+      print('Error fetching news by category: $e');
+      return null;
+    }
+  }
 }
