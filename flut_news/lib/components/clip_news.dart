@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flut_news/utilities/constants.dart';
+import 'package:flut_news/screens/news_webview_screen.dart';
 class ClipNews extends StatelessWidget {
   final String title;
   final String body;
+  final String url;
 
   const ClipNews({
     Key? key,
     required this.title,
     required this.body,
+    required this.url,
   }) : super(key: key);
 
   @override
@@ -61,7 +64,12 @@ class ClipNews extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: TextButton(
                 onPressed: () {
-                  // Handle 'Read More' button click
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewsWebViewScreen(url: url),
+                    ),
+                  );
                 },
                 child: Text(
                   'Read More',
