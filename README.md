@@ -1,3 +1,6 @@
+![Screenshot_20231213_203054](https://github.com/mubozk/FlutNews/assets/62714901/054cfeeb-19ec-48cb-a51a-2f9a65a98fc7) ![Screenshot_20231213_203044](https://github.com/mubozk/FlutNews/assets/62714901/8666840c-b5a4-45be-ab3c-13dc82c5ea2d)
+
+
 # NewsApp
 
 NewsApp is a modern news application for Android and iOS, providing live headlines and top stories from various categories and countries. It offers a seamless experience for users to stay updated with the latest news.
