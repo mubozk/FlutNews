@@ -29,6 +29,7 @@ class NewsListScreen extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.all(8.0),
             child: ClipNews(
+              url: article.url,
               title: article.title,
               body: article.description,
             ),

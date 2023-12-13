@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Padding(
             padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
             child: ClipNews(
+              url: article.url,
               title: article.title,
               body: article.description,
             ),
