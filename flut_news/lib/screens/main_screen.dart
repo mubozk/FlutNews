@@ -58,12 +58,12 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Categories',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.brightness_4),
-            label: 'Theme',
+            icon: Icon(Icons.stars_rounded),
+            label: 'Bookmarks',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info_outline),
-            label: 'Info',
+            icon: Icon(Icons.brightness_4),
+            label: 'Theme',
           ),
         ],
       ),
