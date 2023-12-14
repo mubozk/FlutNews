@@ -10,15 +10,18 @@ final kDarkTheme = ThemeData(
 );
 const TextStyle kTitleTextStyle = TextStyle(
   color: Colors.black,
+  fontFamily: 'Roboto',
   fontSize: 18,
   fontWeight: FontWeight.bold,
 );
 const TextStyle kBodyTextStyle = TextStyle(
   color: Colors.black,
+  fontFamily: 'Roboto',
   fontSize: 14,
 );
 const TextStyle kReadMoreTextStyle = TextStyle(
   color: Colors.blue,
+  fontFamily: 'Roboto',
   fontWeight: FontWeight.bold,
 );
 const kApiKey = 'dd05d13cf257403d804b6e02775564f6';

@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text("Table Layout"),
+        title: Text("FlutNews", style: TextStyle(fontFamily: 'Roboto'),),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

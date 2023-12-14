@@ -39,7 +39,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text("News Categories"),
+        title: Text("News Categories", style: TextStyle(fontFamily: 'Roboto'),),
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemCount: categories.length,
@@ -48,6 +49,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             title: Text(
               categories[index],
               style: TextStyle(
+                fontFamily: 'Roboto',
                 color: kIsDarkMode ? Colors.white : Colors.black,
               ),
             ),            tileColor: kIsDarkMode ? Colors.grey[850] : Colors.white,
