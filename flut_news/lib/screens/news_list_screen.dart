@@ -19,7 +19,9 @@ class NewsListScreen extends StatelessWidget {
       backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text(category),
+        title: Text(category, style: TextStyle(fontFamily: 'Merriweather'),
+        ),
+        centerTitle: true,
 
       ),
       body: ListView.builder(
