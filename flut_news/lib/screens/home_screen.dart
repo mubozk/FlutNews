@@ -17,24 +17,61 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        iconTheme:
+            IconThemeData(color: kIsDarkMode ? Colors.teal : Colors.yellow),
         backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text("FlutNews", style: TextStyle(fontFamily: 'PlayfairDisplay'),),
+        title: Text(
+          "FlutNews",
+          style: TextStyle(
+              fontFamily: 'PlayfairDisplay',
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1.5,
+              color: kIsDarkMode == false
+                  ? const Color.fromARGB(255, 233, 218, 90)
+                  : Colors.teal),
+        ),
         centerTitle: true,
         automaticallyImplyLeading: false,
-      ),
-      body: ListView.builder(
-        itemBuilder: (BuildContext ctx, int index) {
-          NewsArticle article = widget.locationNews[index];
-          return Padding(
-            padding: EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 5),
-            child: ClipNews(
-              url: article.url,
-              title: article.title,
-              body: article.description,
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                kIsDarkMode = !kIsDarkMode;
+              });
+            },
+            icon: Icon(
+              kIsDarkMode == false ? Icons.dark_mode : Icons.light_mode,
+              color: kIsDarkMode == false ? Colors.grey : Colors.yellow,
             ),
-          );
-        },
-        itemCount: widget.locationNews.length,
+          ),
+        ],
+      ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  kIsDarkMode == false
+                      ? '../../assets/light_background.jpg'
+                      : '../../assets/dark_background.jpg',
+                ))),
+        child: ListView.builder(
+          itemBuilder: (BuildContext ctx, int index) {
+            NewsArticle article = widget.locationNews[index];
+            return Padding(
+              padding: const EdgeInsets.only(
+                  top: 15, left: 10, right: 10, bottom: 5),
+              child: ClipNews(
+                url: article.url,
+                title: article.title,
+                body: article.description,
+              ),
+            );
+          },
+          itemCount: widget.locationNews.length,
+        ),
       ),
     );
   }

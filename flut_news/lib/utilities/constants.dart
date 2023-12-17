@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 bool kIsDarkMode = false;
 
 final kLightTheme = ThemeData(
@@ -26,4 +27,3 @@ const TextStyle kReadMoreTextStyle = TextStyle(
 );
 const kApiKey = 'dd05d13cf257403d804b6e02775564f6';
 const kNewsApiURL = 'https://newsapi.org/v2/top-headlines';
-
