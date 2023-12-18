@@ -46,8 +46,6 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
-          setState(() {});
-          toggleTheme();
           setState(() {
             _currentIndex = index;
           });
