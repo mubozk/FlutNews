@@ -21,51 +21,53 @@ class _NewsListScreenState extends State<NewsListScreen> {
         .map((articleJson) => NewsArticle.fromJson(articleJson))
         .toList();
 
-    return Scaffold(
-      backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-      appBar: AppBar(
-        iconTheme:
-            IconThemeData(color: kIsDarkMode ? Colors.teal : Colors.yellow),
-        backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text(
-          "FlutNews",
-          style: TextStyle(
-              fontFamily: 'PlayfairDisplay',
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.5,
-              color: kIsDarkMode == false
-                  ? const Color.fromARGB(255, 233, 218, 90)
-                  : Colors.teal),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                kIsDarkMode = !kIsDarkMode;
-              });
-            },
-            icon: Icon(
-              kIsDarkMode == false ? Icons.dark_mode : Icons.light_mode,
-              color: kIsDarkMode == false ? Colors.grey : Colors.yellow,
+    return ValueListenableBuilder(
+        valueListenable: kIsDarkModeNotifier,
+        builder: (context, bool isDarkMode, _) {
+          return Scaffold(
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                  color: isDarkMode ? Colors.teal : Colors.yellow),
+              backgroundColor: isDarkMode ? Colors.black : Colors.white,
+              title: Text(
+                "FlutNews",
+                style: TextStyle(
+                    fontFamily: 'PlayfairDisplay',
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.5,
+                    color: isDarkMode == false
+                        ? const Color.fromARGB(255, 233, 218, 90)
+                        : Colors.teal),
+              ),
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    kIsDarkModeNotifier.value = !kIsDarkModeNotifier.value;
+                  },
+                  icon: Icon(
+                    isDarkMode == false ? Icons.dark_mode : Icons.light_mode,
+                    color: isDarkMode == false ? Colors.grey : Colors.yellow,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-      body: ListView.builder(
-        itemCount: articles.length,
-        itemBuilder: (context, index) {
-          NewsArticle article = articles[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipNews(
-              url: article.url,
-              title: article.title,
-              body: article.description,
+            body: ListView.builder(
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                NewsArticle article = articles[index];
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipNews(
+                    url: article.url,
+                    title: article.title,
+                    body: article.description,
+                  ),
+                );
+              },
             ),
           );
-        },
-      ),
-    );
+        });
   }
 }
