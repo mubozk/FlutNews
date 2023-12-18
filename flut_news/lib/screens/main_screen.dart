@@ -56,6 +56,10 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.search_rounded),
+            label: 'Places',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: 'Categories',
           ),
