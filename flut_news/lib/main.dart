@@ -33,11 +33,5 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const LoadingScreen();
-    /*  MainScreen(locationNews: [             API DE PROBLEM OLDUĞU İÇİN DENEME AMAÇLI EKLEDİM.
-      NewsArticle(
-          title: 'selam',
-          description: 'dlşadlşşajdalşjd',
-          url: 'ksdjakldasdjşlsadlsşş')
-    ]); */
   }
 }
