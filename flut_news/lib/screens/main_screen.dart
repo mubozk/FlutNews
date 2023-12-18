@@ -7,7 +7,7 @@ import 'package:flut_news/models/news_article.dart';
 class MainScreen extends StatefulWidget {
   final List<NewsArticle> locationNews;
 
-  MainScreen({Key? key, required this.locationNews}) : super(key: key);
+  const MainScreen({Key? key, required this.locationNews}) : super(key: key);
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _pages = [
       HomeScreen(locationNews: widget.locationNews),
-      CategoriesScreen(),
+      const CategoriesScreen(),
       Container(),
       Container(),
     ];
@@ -38,27 +38,19 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: kIsDarkMode ? Colors.grey[900] : Colors.white,
+        backgroundColor: const Color.fromARGB(221, 222, 248, 249),
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
-
         onTap: (index) {
-          if (index == 3) {
-            toggleTheme();
-          } else {
-            setState(() {
-              _currentIndex = index;
-            });
-          }
-          // Additional logic for specific tabs can be implemented here
+          setState(() {
+            _currentIndex = index;
+          });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -71,13 +63,8 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(Icons.stars_rounded),
             label: 'Bookmarks',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.brightness_4),
-            label: 'Theme',
-          ),
         ],
       ),
     );
   }
 }
-
