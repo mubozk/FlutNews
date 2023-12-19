@@ -2,7 +2,6 @@ import 'package:flut_news/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_news/services/news.dart'; // Import NewsModel
 import 'package:flut_news/screens/news_list_screen.dart';
-import 'package:flut_news/models/news_article.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -36,74 +35,78 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-      appBar: AppBar(
-        backgroundColor: kIsDarkMode ? Colors.black : Colors.white,
-        title: Text(
-          "FlutNews",
-          style: TextStyle(
-              fontFamily: 'PlayfairDisplay',
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.5,
-              color: kIsDarkMode == false
-                  ? const Color.fromARGB(255, 233, 218, 90)
-                  : Colors.teal),
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                kIsDarkMode = !kIsDarkMode;
-              });
-            },
-            icon: Icon(
-              kIsDarkMode == false ? Icons.dark_mode : Icons.light_mode,
-              color: kIsDarkMode == false ? Colors.grey : Colors.yellow,
-            ),
-          ),
-        ],
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage(kIsDarkMode == false
-                ? '../../assets/light_background.jpg'
-                : '../../assets/dark_background.jpg'),
-          ),
-        ),
-        child: ListView.builder(
-          itemCount: categories.length,
-          itemBuilder: (context, index) {
-            return ListTile(
+    return ValueListenableBuilder(
+        valueListenable: kIsDarkModeNotifier,
+        builder: (context, bool isDarkMode, _) {
+          return Scaffold(
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            appBar: AppBar(
+              backgroundColor: isDarkMode ? Colors.black : Colors.white,
               title: Text(
-                categories[index],
+                "FlutNews",
                 style: TextStyle(
-                  fontFamily: 'Merriweather',
-                  color: kIsDarkMode ? Colors.white : Colors.black,
+                    fontFamily: 'PlayfairDisplay',
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.5,
+                    color: isDarkMode == false
+                        ? const Color.fromARGB(255, 233, 218, 90)
+                        : Colors.teal),
+              ),
+              centerTitle: true,
+              automaticallyImplyLeading: false,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      kIsDarkModeNotifier.value = !kIsDarkModeNotifier.value;
+                    });
+                  },
+                  icon: Icon(
+                    isDarkMode == false ? Icons.dark_mode : Icons.light_mode,
+                    color: isDarkMode == false ? Colors.grey : Colors.yellow,
+                  ),
+                ),
+              ],
+            ),
+            body: Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(isDarkMode == false
+                      ? '../../assets/light_background.jpg'
+                      : '../../assets/dark_background.jpg'),
                 ),
               ),
-              tileColor: kIsDarkMode ? Colors.grey[850] : Colors.white,
-              onTap: () async {
-                var newsData =
-                    await NewsModel().getNewsByCategory(categories[index]);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewsListScreen(
-                        newsData: newsData, category: categories[index]),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      ),
-    );
+              child: ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      categories[index],
+                      style: TextStyle(
+                        fontFamily: 'Merriweather',
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    tileColor: isDarkMode ? Colors.grey[850] : Colors.white,
+                    onTap: () async {
+                      var newsData = await NewsModel()
+                          .getNewsByCategory(categories[index]);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewsListScreen(
+                              newsData: newsData, category: categories[index]),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          );
+        });
   }
 }
